@@ -14,7 +14,7 @@ public class Logo : MonoBehaviour
     Animator anim;
     SpriteRenderer sr;
 
-    [SerializeField] GameObject logo;
+    private GameObject logo;
 
     private States_logo State_logo {
         get { 
@@ -28,6 +28,7 @@ public class Logo : MonoBehaviour
     private void Start() {
         sr = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>(); 
+        logo = GameObject.Find("Logo");
         State_logo = States_logo.Logo_ON;
         logo.SetActive(false);
     }
@@ -36,5 +37,4 @@ public class Logo : MonoBehaviour
         logo.SetActive(true);
         State_logo = States_logo.Logo_OFF;
     }
-
 }
