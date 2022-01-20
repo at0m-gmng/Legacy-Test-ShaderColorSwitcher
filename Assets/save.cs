@@ -11,14 +11,27 @@ public class save : MonoBehaviour {
     private const string SaveTableKey = "SaveTable.saveData"; // имя для сохранения в PlayerPrefs
     public GameObject form;
     public GameObject logo;
-
+     private Button button;
     [SerializeField] InputField inputField; 
 
     void Awake() {
         form = GameObject.Find("formImage");
         logo = GameObject.Find("LogoImage");
+        inputField.characterLimit = 10;
         saveList = new List<Transform>();
+        button = GameObject.Find("Next_button").GetComponent<Button>();
         // inputField = transform.Find("InputField").GetComponent<InputField>();
+    }
+
+    void Update() {
+        if (inputField.text.Length >= 10) {
+            inputField.transform.Find("Text").GetComponent<Text>().color = new Color(0.713f, 0.133f, 0.0902f, 1f);
+            button.GetComponent<Image>().color = new Color(1, 1, 1, 0.4f);
+            // Debug.Log("asd");
+        } else {
+            inputField.transform.Find("Text").GetComponent<Text>().color = Color.white;
+            button.GetComponent<Image>().color = new Color(1, 1, 1, 1f);
+        }
     }
 
     public void AddAndSave(string name, string colorForm, string colorForm1, string colorForm2, string colorLogo1, string colorLogo2, string colorLogo3) { // Добавление рекорда в таблицу и пересохранение 
@@ -64,18 +77,20 @@ public class save : MonoBehaviour {
     }
 
     public void SendResults() {
+        if (inputField.text.Length <= inputField.characterLimit) {
         LoadTable();
         Debug.Log(inputField.text);
         // form.GetComponent<Image>().material.GetColor("Color_52742d5ce3ce4fd7a98ef170efce1cee")
         AddAndSave(
             inputField.text,
             form.GetComponent<Image>().material.GetColor("_Color1").ToString(),
-            form.GetComponent<Image>().material.GetColor("_Color3").ToString(), 
-            form.GetComponent<Image>().material.GetColor("_Color2").ToString(),
+            form.GetComponent<Image>().material.GetColor("_Color2").ToString(), 
+            form.GetComponent<Image>().material.GetColor("_Color3").ToString(),
             logo.GetComponent<Image>().material.GetColor("_ColorLogo1").ToString(),
             logo.GetComponent<Image>().material.GetColor("_ColorLogo2").ToString(),
             logo.GetComponent<Image>().material.GetColor("_ColorLogo3").ToString()
         );
         // Debug.Log(saveTable);
+        }
     }
 }
