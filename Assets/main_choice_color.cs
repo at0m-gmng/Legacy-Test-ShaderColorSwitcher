@@ -15,7 +15,6 @@ public class main_choice_color : MonoBehaviour {
     private Button  random_color;
     public GameObject form;
     public GameObject logo;
-    public MeshRenderer meshRen;
 
     private int shader_count = 0;
     public int press = 1;
@@ -28,9 +27,6 @@ public class main_choice_color : MonoBehaviour {
         logo = GameObject.Find("LogoImage");
         random_color = GameObject.Find("Random_Color_Button").GetComponent<Button>();
         button_next = GameObject.Find("Next_button").GetComponent<Button>();
-
-        meshRen = GameObject.Find("formImage").GetComponent<MeshRenderer>();
-        // form.GetComponent<MeshRenderer>().material = materials[1];
     }
     // если далее нажато 3 и более раза, другая сцена
     public void counter() {
@@ -39,22 +35,21 @@ public class main_choice_color : MonoBehaviour {
             SceneManager.LoadScene(1);
         }
     } 
-    // рандомный цвет 
+    // рандомный цвет сразу для 3х частей
     public void random_Color() {
-        if (press == 1 && shader_count == 0) {
+        if (press == 1) {
             form.GetComponent<Image>().material.SetColor("_Color1", new Color(Random.value, Random.value, Random.value, 1));
-        }
-        if (press == 1 && shader_count == 1) {
             form.GetComponent<Image>().material.SetColor("_Color2", new Color(Random.value, Random.value, Random.value, 1));
-        }
-        if (press == 1 && shader_count == 2) {
             form.GetComponent<Image>().material.SetColor("_Color3", new Color(Random.value, Random.value, Random.value, 1));
         }
-        if (press == 1 && press == 2) {
-            logo.GetComponent<Image>().material.SetColor("Color_000bb06fd1f649eaa94ec8e769a24fec", new Color(Random.value, Random.value, Random.value, 1));
+        if (press == 2) {
+            logo.GetComponent<Image>().material.SetColor("_ColorLogo1", new Color(Random.value, Random.value, Random.value, 1));
+            logo.GetComponent<Image>().material.SetColor("_ColorLogo2", new Color(Random.value, Random.value, Random.value, 1));
+            logo.GetComponent<Image>().material.SetColor("_ColorLogo3", new Color(Random.value, Random.value, Random.value, 1));
+
         }
     }
-    // изменение объекта окраски после нажатия кнопки далее  new Color(Random.value, Random.value, Random.value, 1)
+    // изменение объекта окраски после нажатия кнопки далее
     public void button_color(string name) {
         button = GameObject.Find(name).GetComponent<Button>();
         if(press == 1 && shader_count == 0) {
@@ -66,8 +61,14 @@ public class main_choice_color : MonoBehaviour {
         } else if (press == 1) {
             form.GetComponent<Image>().material.SetColor("_Color1", button.GetComponent<Image>().color);
         }
-        if(press == 2) {
-            logo.GetComponent<Image>().material.SetColor("Color_000bb06fd1f649eaa94ec8e769a24fec", button.GetComponent<Image>().color);
+        if(press == 2 && shader_count == 0) {
+            logo.GetComponent<Image>().material.SetColor("_ColorLogo1", button.GetComponent<Image>().color);
+        } else if (press == 2 && shader_count == 1) {
+            logo.GetComponent<Image>().material.SetColor("_ColorLogo2", button.GetComponent<Image>().color);
+        } else if (press == 2 && shader_count == 2) {
+            logo.GetComponent<Image>().material.SetColor("_ColorLogo3", button.GetComponent<Image>().color);
+        }  else if (press == 2) {
+            logo.GetComponent<Image>().material.SetColor("_ColorLogo1", button.GetComponent<Image>().color);
         }
     }
     // в зависимости от выбора кнопки по центру выбирается материал и окрашиваемая область
