@@ -112,9 +112,9 @@ Material:
     - Color_000bb06fd1f649eaa94ec8e769a24fec: {r: 0.3647059, g: 0.2509804, b: 0.6117647, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorLogo1: {r: 0.3647059, g: 0.2509804, b: 0.6117647, a: 1}
-    - _ColorLogo2: {r: 0.9921569, g: 0.82745105, b: 0.43921572, a: 1}
-    - _ColorLogo3: {r: 0.16078432, g: 0.47058827, b: 0.7254902, a: 1}
+    - _ColorLogo1: {r: 0.66291255, g: 0.16122974, b: 0.4599442, a: 1}
+    - _ColorLogo2: {r: 0.6778117, g: 0.41452807, b: 0.6122076, a: 1}
+    - _ColorLogo3: {r: 0.58842045, g: 0.8872814, b: 0.4791898, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
