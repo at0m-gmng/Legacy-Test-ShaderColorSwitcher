@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: logo_color_material
-  m_Shader: {fileID: -6465566751694194690, guid: b9854599923d3424ea5bab247dbb10b4, type: 3}
+  m_Shader: {fileID: 4800000, guid: 76e1e38260af7f7459991e9e3fd3e6d9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -86,6 +86,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _ColorMask: 15
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -95,6 +96,25 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HSVRangeMax: 0.1
+    - _HSVRangeMax_1: 1
+    - _HSVRangeMax_2: 1
+    - _HSVRangeMax_3: 1
+    - _HSVRangeMin: 0.07
+    - _HSVRangeMin_1: 0
+    - _HSVRangeMin_2: 0
+    - _HSV_Color_Range_Max_1: 0.085
+    - _HSV_Color_Range_Max_2: 0.2
+    - _HSV_Color_Range_Max_3: 0.07
+    - _HSV_Color_Range_Min_1: 0.07
+    - _HSV_Color_Range_Min_2: 0.1
+    - _HSV_Color_Range_Min_3: 0
+    - _HSV_Range_Max_1: 1
+    - _HSV_Range_Max_2: 1
+    - _HSV_Range_Max_3: 1
+    - _HSV_Range_Min_1: 0
+    - _HSV_Range_Min_2: 0
+    - _HSV_Range_Min_3: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -105,6 +125,11 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -112,10 +137,19 @@ Material:
     - Color_000bb06fd1f649eaa94ec8e769a24fec: {r: 0.3647059, g: 0.2509804, b: 0.6117647, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorLogo1: {r: 0.15670778, g: 0.3785835, b: 0.49425894, a: 1}
-    - _ColorLogo2: {r: 0.55501395, g: 0.9725177, b: 0.7342896, a: 1}
-    - _ColorLogo3: {r: 0.6797461, g: 0.8404515, b: 0.86257017, a: 1}
+    - _ColorLogo1: {r: 0.3647059, g: 0.2509804, b: 0.6117647, a: 1}
+    - _ColorLogo2: {r: 0.764151, g: 0.74091226, b: 0.1477839, a: 1}
+    - _ColorLogo3: {r: 0.17056033, g: 0.7924528, b: 0.115877524, a: 1}
+    - _Color_1: {r: 0.06369985, g: 0.5121884, b: 0.21629527, a: 1}
+    - _Color_2: {r: 0.705944, g: 0.858024, b: 0.32412377, a: 1}
+    - _Color_3: {r: 0.7751839, g: 0.20108393, b: 0.14349987, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HSVAAdjust: {r: 0, g: -3, b: 0.19999999, a: 0}
+    - _HSVAAdjust_1: {r: 0, g: 0, b: 0, a: 0}
+    - _HSVAAdjust_2: {r: 0, g: 0, b: 0, a: 0}
+    - _HSVA_Color_Adjust_1: {r: 0.39004064, g: 0.875632, b: -0.08781165, a: 0}
+    - _HSVA_Color_Adjust_2: {r: 0.2141412, g: 0.62224394, b: 0.25802398, a: 0}
+    - _HSVA_Color_Adjust_3: {r: 0.015193265, g: 0.8148828, b: 0.17518389, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4652279155634882190

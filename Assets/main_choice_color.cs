@@ -22,7 +22,7 @@ public class main_choice_color : MonoBehaviour {
 
     private int shader_count = 0;
     public int press = 1;
-
+    float x, y, z;
 
     void Start() {
         sr = GetComponentInChildren<SpriteRenderer>();
@@ -43,19 +43,43 @@ public class main_choice_color : MonoBehaviour {
             SceneManager.LoadScene(1);
         }
     } 
+
     // рандомный цвет сразу для 3х частей
     public void random_Color() {
-        if (press == 1) {
-            form.GetComponent<Image>().material.SetColor("_Color1", new Color(Random.value, Random.value, Random.value, 1)); 
-            form.GetComponent<Image>().material.SetColor("_Color2", new Color(Random.value, Random.value, Random.value, 1)); 
-            form.GetComponent<Image>().material.SetColor("_Color3", new Color(Random.value, Random.value, Random.value, 1));
-        }
-        if (press == 2) {
-            logo.GetComponent<Image>().material.SetColor("_ColorLogo1", new Color(Random.value, Random.value, Random.value, 1));
-            logo.GetComponent<Image>().material.SetColor("_ColorLogo2", new Color(Random.value, Random.value, Random.value, 1));
-            logo.GetComponent<Image>().material.SetColor("_ColorLogo3", new Color(Random.value, Random.value, Random.value, 1));
+        Color color_random = new Color(Random.value, Random.value, Random.value, 1);
+        Color.RGBToHSV(color_random, out x, out y, out z);
+        if(press == 1) {
+                form.GetComponent<Image>().material.SetColor("_Color_1", color_random);
+                form.GetComponent<Image>().material.SetVector("_HSVA_Color_Adjust_1", new Vector4(x, y, (z-.6f), 0));
 
-        }
+                color_random = new Color(Random.value, Random.value, Random.value, 1);
+                Color.RGBToHSV(color_random, out x, out y, out z);
+
+                form.GetComponent<Image>().material.SetColor("_Color_2", color_random);
+                form.GetComponent<Image>().material.SetVector("_HSVA_Color_Adjust_2", new Vector4(x, y, (z-.6f), 0));
+                
+                color_random = new Color(Random.value, Random.value, Random.value, 1);
+                Color.RGBToHSV(color_random, out x, out y, out z);
+
+                form.GetComponent<Image>().material.SetColor("_Color_3", color_random);
+                form.GetComponent<Image>().material.SetVector("_HSVA_Color_Adjust_3", new Vector4(x, y, (z-.6f), 0));
+            }
+        if(press == 2) {
+                logo.GetComponent<Image>().material.SetColor("_Color_1", color_random);
+                logo.GetComponent<Image>().material.SetVector("_HSVA_Color_Adjust_1", new Vector4(x, y, (z-.6f), 0));
+
+                color_random = new Color(Random.value, Random.value, Random.value, 1);
+                Color.RGBToHSV(color_random, out x, out y, out z);
+
+                logo.GetComponent<Image>().material.SetColor("_Color_2", color_random);
+                logo.GetComponent<Image>().material.SetVector("_HSVA_Color_Adjust_2", new Vector4(x, y, (z-.6f), 0));
+                
+                color_random = new Color(Random.value, Random.value, Random.value, 1);
+                Color.RGBToHSV(color_random, out x, out y, out z);
+
+                logo.GetComponent<Image>().material.SetColor("_Color_3", color_random);
+                logo.GetComponent<Image>().material.SetVector("_HSVA_Color_Adjust_3", new Vector4(x, y, (z-.6f), 0));
+            }
         for (int i = 0; i <= 2; i++) {
             shader_count = i;
             main_color_buttons();
@@ -65,57 +89,92 @@ public class main_choice_color : MonoBehaviour {
     // изменение объекта окраски после нажатия кнопки далее
     public void button_color(string name) {
         button = GameObject.Find(name).GetComponent<Button>();
-        if(press == 1 && shader_count == 0) {
-            form.GetComponent<Image>().material.SetColor("_Color1", button.GetComponent<Image>().color);
-        } else if (press == 1 && shader_count == 1) {
-            form.GetComponent<Image>().material.SetColor("_Color2", button.GetComponent<Image>().color);
-        } else if (press == 1 && shader_count == 2) {
-            form.GetComponent<Image>().material.SetColor("_Color3", button.GetComponent<Image>().color);
-        } else if (press == 1) {
-            form.GetComponent<Image>().material.SetColor("_Color1", button.GetComponent<Image>().color);
+        Color.RGBToHSV(button.GetComponent<Image>().color, out x, out y, out z);
+        if(x ==0 && y == 0) 
+            y = -3f;
+        if(press == 1) {
+            if (shader_count == 0) {
+                form.GetComponent<Image>().material.SetColor("_Color_1", button.GetComponent<Image>().color);
+                form.GetComponent<Image>().material.SetVector("_HSVA_Color_Adjust_1", new Vector4(x, y, (z-.6f), 0));
+            } else if (shader_count == 1) {
+                form.GetComponent<Image>().material.SetColor("_Color_2", button.GetComponent<Image>().color);
+                form.GetComponent<Image>().material.SetVector("_HSVA_Color_Adjust_2", new Vector4(x, y, (z-.6f), 0));
+            } else if (shader_count == 2) {
+                form.GetComponent<Image>().material.SetColor("_Color_3", button.GetComponent<Image>().color);
+                form.GetComponent<Image>().material.SetVector("_HSVA_Color_Adjust_3", new Vector4(x, y, (z-.6f), 0));
+            }
         }
-        if(press == 2 && shader_count == 0) {
-            logo.GetComponent<Image>().material.SetColor("_ColorLogo1", button.GetComponent<Image>().color);
-        } else if (press == 2 && shader_count == 1) {
-            logo.GetComponent<Image>().material.SetColor("_ColorLogo2", button.GetComponent<Image>().color);
-        } else if (press == 2 && shader_count == 2) {
-            logo.GetComponent<Image>().material.SetColor("_ColorLogo3", button.GetComponent<Image>().color);
-        }  else if (press == 2) {
-            logo.GetComponent<Image>().material.SetColor("_ColorLogo1", button.GetComponent<Image>().color);
+        if(press == 2) {
+            if (shader_count == 0) {
+                logo.GetComponent<Image>().material.SetColor("_Color_1", button.GetComponent<Image>().color);
+                logo.GetComponent<Image>().material.SetVector("_HSVA_Color_Adjust_1", new Vector4(x, y, (z-.8f), 0));
+            } else if (shader_count == 1) {
+                logo.GetComponent<Image>().material.SetColor("_Color_1", button.GetComponent<Image>().color);
+                logo.GetComponent<Image>().material.SetVector("_HSVA_Color_Adjust_2", new Vector4(x, y, (z-.8f), 0));
+            } else if (shader_count == 2) {
+                logo.GetComponent<Image>().material.SetColor("_Color_1", button.GetComponent<Image>().color);
+                logo.GetComponent<Image>().material.SetVector("_HSVA_Color_Adjust_3", new Vector4(x, y, (z-.8f), 0));
+            }
         }
         main_color_buttons();
     }
 
     private void main_color_buttons() {
-        if(press == 1 && shader_count == 0) {
-            button_main_color_left.GetComponent<Image>().color = form.GetComponent<Image>().material.GetColor("_Color1");
-        } else if(press == 2 && shader_count == 0) {
-            button_main_color_left.GetComponent<Image>().color = logo.GetComponent<Image>().material.GetColor("_ColorLogo1");
+        if(press == 1) {
+            if (shader_count == 0) {
+                button_main_color_left.GetComponent<Image>().color = form.GetComponent<Image>().material.GetColor("_Color_1");
+            } else if (shader_count == 1) {
+                button_main_color_midlle.GetComponent<Image>().color = form.GetComponent<Image>().material.GetColor("_Color_2");
+            } else if (shader_count == 2) {
+                button_main_color_right.GetComponent<Image>().color = form.GetComponent<Image>().material.GetColor("_Color_3");
+            }
         }
-        if(press == 1 && shader_count == 1) {
-            button_main_color_midlle.GetComponent<Image>().color = form.GetComponent<Image>().material.GetColor("_Color2");
-        } else if(press == 2 && shader_count == 1) {
-            button_main_color_midlle.GetComponent<Image>().color = logo.GetComponent<Image>().material.GetColor("_ColorLogo2");
+        if(press == 2) {
+            if (shader_count == 0) {
+                button_main_color_left.GetComponent<Image>().color = logo.GetComponent<Image>().material.GetColor("_Color_1");
+            } else if (shader_count == 1) {
+                button_main_color_midlle.GetComponent<Image>().color = logo.GetComponent<Image>().material.GetColor("_Color_2");
+            } else if (shader_count == 2) {
+                button_main_color_right.GetComponent<Image>().color = logo.GetComponent<Image>().material.GetColor("_Color_3");
+            }
         }
-        if(press == 1 && shader_count == 2) {
-            button_main_color_right.GetComponent<Image>().color = form.GetComponent<Image>().material.GetColor("_Color3");
-        } else if(press == 2 && shader_count == 2) {
-            button_main_color_right.GetComponent<Image>().color = logo.GetComponent<Image>().material.GetColor("_ColorLogo3");
-        }
-
     }
     // в зависимости от выбора кнопки по центру выбирается материал и окрашиваемая область
     public void shader_change(string name) {
         // button_main_color = GameObject.Find(name).GetComponent<Button>();
-        if (name == "Color_but_left") {
-            shader_count = 0;
-        } else if (name == "Color_but_midlle") {
-            shader_count = 1;
-        } else if (name == "Color_but_right") {
-            shader_count = 2;
+        if(press == 1) {
+            if (name == "Color_but_left") {
+                shader_count = 0;
+                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_1", .01f);
+                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_1", .65f);
+            } else if (name == "Color_but_midlle") {
+                shader_count = 1;
+                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_2", .65f);
+                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_2", 1.0f);
+            } else if ( name == "Color_but_right") {
+                shader_count = 2;
+                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_3", 0f);
+                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_3", .01f);
+            }
+        }
+        if(press == 2) {
+            if (name == "Color_but_left") {
+                shader_count = 0;
+                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_1", .07f);
+                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_1", .085f);
+            } else if (name == "Color_but_midlle") {
+                shader_count = 1;
+                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_2", .1f);
+                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_2", .2f);
+            } else if ( name == "Color_but_right") {
+                shader_count = 2;
+                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_3", 0f);
+                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_3", .07f);
+            }
         }
         // form.GetComponent<Image>().material = meshRen.materials[shader_count];
         // Debug.Log(form.GetComponent<Image>().material);
         // Debug.Log(meshRen.materials[shader_count]);
+        Debug.Log(shader_count);
     }
 }

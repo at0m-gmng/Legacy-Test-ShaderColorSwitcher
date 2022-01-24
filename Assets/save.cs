@@ -83,12 +83,12 @@ public class save : MonoBehaviour {
         // form.GetComponent<Image>().material.GetColor("Color_52742d5ce3ce4fd7a98ef170efce1cee")
         AddAndSave(
             inputField.text,
-            form.GetComponent<Image>().material.GetColor("_Color1").ToString(),
-            form.GetComponent<Image>().material.GetColor("_Color2").ToString(), 
-            form.GetComponent<Image>().material.GetColor("_Color3").ToString(),
-            logo.GetComponent<Image>().material.GetColor("_ColorLogo1").ToString(),
-            logo.GetComponent<Image>().material.GetColor("_ColorLogo2").ToString(),
-            logo.GetComponent<Image>().material.GetColor("_ColorLogo3").ToString()
+            form.GetComponent<Image>().material.GetColor("_Color_1").ToString(),
+            form.GetComponent<Image>().material.GetColor("_Color_2").ToString(), 
+            form.GetComponent<Image>().material.GetColor("_Color_3").ToString(),
+            logo.GetComponent<Image>().material.GetColor("_Color_1").ToString(),
+            logo.GetComponent<Image>().material.GetColor("_Color_2").ToString(),
+            logo.GetComponent<Image>().material.GetColor("_Color_3").ToString()
         );
         // Debug.Log(saveTable);
         }
