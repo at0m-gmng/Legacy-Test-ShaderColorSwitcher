@@ -17,14 +17,14 @@ public class save : MonoBehaviour {
     void Awake() {
         form = GameObject.Find("formImage");
         logo = GameObject.Find("LogoImage");
-        inputField.characterLimit = 10;
+        inputField.characterLimit = 11;
         saveList = new List<Transform>();
         button = GameObject.Find("Next_button").GetComponent<Button>();
         // inputField = transform.Find("InputField").GetComponent<InputField>();
     }
 
     void Update() {
-        if (inputField.text.Length >= 10) {
+        if (inputField.text.Length > 10) {
             inputField.transform.Find("Text").GetComponent<Text>().color = new Color(0.713f, 0.133f, 0.0902f, 1f);
             button.GetComponent<Image>().color = new Color(1, 1, 1, 0.4f);
             // Debug.Log("asd");
