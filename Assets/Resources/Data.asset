@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26ba39208d96a3241add4ea150f908a7, type: 3}
+  m_Name: Data
+  m_EditorClassIdentifier: 
+  _sprite:
+  - {fileID: 21300000, guid: 0c54d2f4e6fd00c4e802007c2dbcd5e9, type: 3}
+  - {fileID: 21300000, guid: 765e2930ff4d13845ab7eb79c45a6cdf, type: 3}
+  _HSV_Color_Range_Min_1:
+  - 0.01
+  - 0.07
+  _HSV_Color_Range_Max_1:
+  - 0.65
+  - 0.85
+  _HSV_Color_Range_Min_2:
+  - 0.65
+  - 0.1
+  _HSV_Color_Range_Max_2:
+  - 1
+  - 0.2
+  _HSV_Color_Range_Min_3:
+  - 0
+  - 0
+  _HSV_Color_Range_Max_3:
+  - 0.01
+  - 0.07

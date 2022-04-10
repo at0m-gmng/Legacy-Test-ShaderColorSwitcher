@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 public class main_choice_color : MonoBehaviour {
+
+    [SerializeField] private dataData data;
 
     Animator anim;
     SpriteRenderer sr;
@@ -17,8 +18,8 @@ public class main_choice_color : MonoBehaviour {
     private Button button_main_color_right;
 
     private Button  random_color;
-    public GameObject form;
-    public GameObject logo;
+    private GameObject form;
+    private GameObject logo;
 
     private int shader_count = 0;
     public int press = 1;
@@ -26,7 +27,7 @@ public class main_choice_color : MonoBehaviour {
 
     void Start() {
         sr = GetComponentInChildren<SpriteRenderer>();
-        anim = GetComponent<Animator>(); 
+        anim = GetComponent<Animator>();
         form = GameObject.Find("formImage");
         logo = GameObject.Find("LogoImage");
         random_color = GameObject.Find("Random_Color_Button").GetComponent<Button>();
@@ -89,6 +90,7 @@ public class main_choice_color : MonoBehaviour {
     // изменение объекта окраски после нажатия кнопки далее
     public void button_color(string name) {
         button = GameObject.Find(name).GetComponent<Button>();
+        //Debug.Log(name);
         Color.RGBToHSV(button.GetComponent<Image>().color, out x, out y, out z);
         if(x ==0 && y == 0) 
             y = -3f;
@@ -145,31 +147,31 @@ public class main_choice_color : MonoBehaviour {
         if(press == 1) {
             if (name == "Color_but_left") {
                 shader_count = 0;
-                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_1", .01f);
-                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_1", .65f);
+                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_1", data.HSV_Color_Range_Min_1[0]);
+                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_1", data.HSV_Color_Range_Max_1[0]);
             } else if (name == "Color_but_midlle") {
                 shader_count = 1;
-                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_2", .65f);
-                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_2", 1.0f);
+                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_2", data.HSV_Color_Range_Min_2[0]);
+                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_2", data.HSV_Color_Range_Max_2[0]);
             } else if ( name == "Color_but_right") {
                 shader_count = 2;
-                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_3", 0f);
-                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_3", .01f);
+                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_3", data.HSV_Color_Range_Min_3[0]);
+                form.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_3", data.HSV_Color_Range_Max_3[0]);
             }
         }
         if(press == 2) {
             if (name == "Color_but_left") {
                 shader_count = 0;
-                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_1", .07f);
-                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_1", .085f);
+                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_1", data.HSV_Color_Range_Min_1[1]);
+                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_1", data.HSV_Color_Range_Max_1[1]);
             } else if (name == "Color_but_midlle") {
                 shader_count = 1;
-                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_2", .1f);
-                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_2", .2f);
+                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_2", data.HSV_Color_Range_Min_2[1]);
+                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_2", data.HSV_Color_Range_Max_2[1]);
             } else if ( name == "Color_but_right") {
                 shader_count = 2;
-                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_3", 0f);
-                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_3", .07f);
+                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Min_3", data.HSV_Color_Range_Min_3[1]);
+                logo.GetComponent<Image>().material.SetFloat("_HSV_Color_Range_Max_3", data.HSV_Color_Range_Max_3[1]);
             }
         }
         // form.GetComponent<Image>().material = meshRen.materials[shader_count];
